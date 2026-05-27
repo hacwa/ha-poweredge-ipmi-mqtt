@@ -4,55 +4,27 @@ Publishes Dell PowerEdge iDRAC/IPMI sensor data to MQTT for Home Assistant.
 
 ## What it does
 
-- Runs ipmitool sensor
+- Supports multiple Dell PowerEdge servers from one add-on instance
+- Runs ipmitool sensor against each configured iDRAC
 - Extracts configured sensor names
 - Publishes sensor values to MQTT
 - Publishes Home Assistant MQTT discovery config
-- Publishes availability state
-
-## Default MQTT host
-
-The default MQTT host is:
-
-    a0d7b954-emqx
-
-This is suitable for the EMQX Home Assistant add-on. If using Mosquitto, change mqtt_host to the relevant broker hostname.
+- Publishes per-server availability state
 
 ## Configuration
 
-All private values must be set in the Home Assistant add-on configuration UI.
+Configure servers in the Home Assistant add-on configuration UI.
 
-Required values:
+Each server must have a unique topic_prefix and device_identifier.
 
-- idrac_host
-- idrac_user
-- idrac_password
-- mqtt_host
-- mqtt_port
-- topic_prefix
-- discovery_prefix
-- device_identifier
-- device_name
-- device_model
+## MQTT host
 
-MQTT username and password are optional.
+Default MQTT host:
 
-## Sensor mapping
+    a0d7b954-emqx
 
-The add-on publishes these MQTT topic suffixes:
+Use this for the EMQX Home Assistant add-on. If using Mosquitto, change mqtt_host to the correct broker hostname.
 
-| Sensor | Topic suffix |
-|---|---|
-| Inlet temperature | server_inlet_temp |
-| Temperature 1 | temperature_1 |
-| Fan 1 speed | server_fan1_speed |
-| Fan 2 speed | server_fan2_speed |
-| Power consumption | power_consumption |
-| Current 1 | current_1 |
-| Voltage 1 | voltage_1 |
-| CPU usage | cpu_usage |
-| IO usage | io_usage |
-| Memory usage | mem_usage |
-| System usage | sys_usage |
+## Notes
 
-The IPMI sensor names are configurable because Dell models and firmware versions can expose different names.
+This add-on is read-only. It does not control fan speed.

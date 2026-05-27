@@ -1,5 +1,5 @@
 name: "PowerEdge IPMI MQTT"
-version: "0.1.0"
+version: "0.2.0"
 slug: "poweredge_ipmi_mqtt"
 description: "Publishes Dell PowerEdge iDRAC/IPMI sensor data to MQTT"
 url: "https://github.com/hacwa/ha-poweredge-ipmi-mqtt/tree/main/poweredge_ipmi_mqtt"
@@ -11,53 +11,55 @@ boot: auto
 init: false
 
 options:
-  idrac_host: ""
-  idrac_user: "root"
-  idrac_password: ""
   mqtt_host: "a0d7b954-emqx"
   mqtt_port: 1883
   mqtt_user: ""
   mqtt_password: ""
-  topic_prefix: "server/poweredge"
   discovery_prefix: "homeassistant"
   poll_interval: 10
-  device_identifier: "poweredge_ipmi"
-  device_name: "Dell PowerEdge IPMI"
-  device_model: "PowerEdge"
-  sensor_inlet_temp_name: "Inlet Temp"
-  sensor_temperature_1_name: "Temp"
-  sensor_fan1_name: "Fan1"
-  sensor_fan2_name: "Fan2"
-  sensor_power_consumption_name: "Pwr Consumption"
-  sensor_current_1_name: "Current 1"
-  sensor_voltage_1_name: "Voltage 1"
-  sensor_cpu_usage_name: "CPU Usage"
-  sensor_io_usage_name: "IO Usage"
-  sensor_mem_usage_name: "MEM Usage"
-  sensor_sys_usage_name: "SYS Usage"
+  servers:
+    - name: "Dell PowerEdge 1"
+      idrac_host: ""
+      idrac_user: "root"
+      idrac_password: ""
+      topic_prefix: "server/poweredge_1"
+      device_identifier: "poweredge_1_ipmi"
+      device_model: "PowerEdge"
+      sensor_inlet_temp_name: "Inlet Temp"
+      sensor_temperature_1_name: "Temp"
+      sensor_fan1_name: "Fan1"
+      sensor_fan2_name: "Fan2"
+      sensor_power_consumption_name: "Pwr Consumption"
+      sensor_current_1_name: "Current 1"
+      sensor_voltage_1_name: "Voltage 1"
+      sensor_cpu_usage_name: "CPU Usage"
+      sensor_io_usage_name: "IO Usage"
+      sensor_mem_usage_name: "MEM Usage"
+      sensor_sys_usage_name: "SYS Usage"
 
 schema:
-  idrac_host: str
-  idrac_user: str
-  idrac_password: password
   mqtt_host: str
   mqtt_port: port
   mqtt_user: str?
   mqtt_password: password?
-  topic_prefix: str
   discovery_prefix: str
   poll_interval: int
-  device_identifier: str
-  device_name: str
-  device_model: str
-  sensor_inlet_temp_name: str
-  sensor_temperature_1_name: str
-  sensor_fan1_name: str
-  sensor_fan2_name: str
-  sensor_power_consumption_name: str
-  sensor_current_1_name: str
-  sensor_voltage_1_name: str
-  sensor_cpu_usage_name: str
-  sensor_io_usage_name: str
-  sensor_mem_usage_name: str
-  sensor_sys_usage_name: str
+  servers:
+    - name: str
+      idrac_host: str
+      idrac_user: str
+      idrac_password: password
+      topic_prefix: str
+      device_identifier: str
+      device_model: str
+      sensor_inlet_temp_name: str
+      sensor_temperature_1_name: str
+      sensor_fan1_name: str
+      sensor_fan2_name: str
+      sensor_power_consumption_name: str
+      sensor_current_1_name: str
+      sensor_voltage_1_name: str
+      sensor_cpu_usage_name: str
+      sensor_io_usage_name: str
+      sensor_mem_usage_name: str
+      sensor_sys_usage_name: str
