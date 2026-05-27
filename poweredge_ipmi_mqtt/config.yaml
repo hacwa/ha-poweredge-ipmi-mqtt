@@ -1,0 +1,39 @@
+name: "PowerEdge IPMI MQTT"
+version: "0.1.0"
+slug: "poweredge_ipmi_mqtt"
+description: "Publishes Dell PowerEdge iDRAC/IPMI sensor data to MQTT for Home Assistant."
+url: "https://github.com/hacwa/ha-poweredge-ipmi-mqtt/tree/main/poweredge_ipmi_mqtt"
+arch:
+  - amd64
+  - aarch64
+startup: services
+boot: auto
+init: false
+
+options:
+  idrac_host: ""
+  idrac_user: ""
+  idrac_password: ""
+  mqtt_host: "core-mosquitto"
+  mqtt_port: 1883
+  mqtt_user: ""
+  mqtt_password: ""
+  topic_prefix: "server/poweredge"
+  discovery_prefix: "homeassistant"
+  device_name: "Dell PowerEdge"
+  device_identifier: "poweredge_ipmi"
+  poll_interval: 10
+
+schema:
+  idrac_host: str
+  idrac_user: str
+  idrac_password: password
+  mqtt_host: str
+  mqtt_port: port
+  mqtt_user: str?
+  mqtt_password: password?
+  topic_prefix: str
+  discovery_prefix: str
+  device_name: str
+  device_identifier: str
+  poll_interval: int
