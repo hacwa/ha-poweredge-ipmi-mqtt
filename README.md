@@ -1,35 +1,44 @@
 # PowerEdge IPMI MQTT Home Assistant Add-on Repository
 
-This repository provides a Home Assistant add-on for publishing Dell PowerEdge iDRAC/IPMI sensor data to MQTT.
+Home Assistant add-on repository for publishing Dell PowerEdge iDRAC/IPMI sensor data to MQTT.
 
-The add-on is intended for Dell PowerEdge servers with IPMI over LAN enabled through iDRAC.
+The add-on reads sensor data from Dell iDRAC/IPMI using ipmitool sensor, publishes selected values to MQTT, and creates Home Assistant MQTT discovery sensors.
 
 ## Add-on
 
-- `poweredge_ipmi_mqtt` - Publishes IPMI sensor readings to MQTT and creates Home Assistant MQTT discovery entities.
+- poweredge_ipmi_mqtt
 
 ## Installation
 
 In Home Assistant:
 
-1. Go to Settings.
-2. Go to Add-ons.
-3. Open the Add-on Store.
-4. Select the three-dot menu.
-5. Select Repositories.
-6. Add this repository URL:
+1. Go to Settings
+2. Go to Add-ons
+3. Open the Add-on Store
+4. Open the three-dot menu
+5. Select Repositories
+6. Add this repository:
 
-https://github.com/hacwa/ha-poweredge-ipmi-mqtt
+    https://github.com/hacwa/ha-poweredge-ipmi-mqtt
+
+Then install PowerEdge IPMI MQTT.
 
 ## Requirements
 
 - Dell PowerEdge server with iDRAC
 - IPMI over LAN enabled in iDRAC
-- Home Assistant MQTT broker, for example Mosquitto
-- Valid iDRAC username and password
+- MQTT broker available to Home Assistant
+- Valid iDRAC credentials
+- Valid MQTT credentials if your broker requires authentication
 
-## Security notes
+## Security
 
-This add-on requires iDRAC/IPMI credentials. Use a dedicated iDRAC user with the minimum permissions required to read sensors.
+Do not commit real iDRAC or MQTT credentials.
 
-Do not commit real IP addresses, usernames, or passwords into this repository.
+All sensitive values are configured in the Home Assistant add-on configuration UI.
+
+## Notes
+
+This add-on is read-only. It does not control fan speed.
+
+Default sensor names are based on Dell PowerEdge T-series style IPMI output, but they are configurable.
